@@ -18,6 +18,7 @@ jobs:
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASS}}
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-           docker build . --tag $DOCKER_USER/django:v1
-           docker push $DOCKERUSER/django:v1
+      run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          docker build . -t $DOCKER_USER/django:v1
+          docker push $DOCKER_USER/django:v1
